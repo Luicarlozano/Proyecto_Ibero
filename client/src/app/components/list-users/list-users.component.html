@@ -1,0 +1,54 @@
+<div>
+  <table class="table-users">
+    <thead class="table-users_head">
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">Documento</th>
+        <th scope="col">Correo Electronico</th>
+        <th scope="col">Role</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(user of users; track user._id){
+      <tr>
+        <th scope="row">
+          {{ user.firstName }}
+        </th>
+        <td>
+          {{ user.lastName }}
+        </td>
+        <td>
+          {{ user.idNumber }}
+        </td>
+        <td>
+          {{ user.email }}
+        </td>
+        <td>
+          {{ user.role }}
+        </td>
+        @if (user.state === "activo") {
+        <td class="active">
+          {{ user.state }}
+        </td>
+        } @else {
+        <td class="inactive">
+          {{ user.state }}
+        </td>
+        }
+
+        <td class="actions">
+          <button class="imgButton">
+            <img src="/Edit Profile.png" alt="" />
+          </button>
+          <button class="imgButton">
+            <img src="/Delete Profile.png" alt="" />
+          </button>
+        </td>
+      </tr>
+    }
+    </tbody>
+  </table>
+</div>
