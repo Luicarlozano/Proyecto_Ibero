@@ -28,6 +28,11 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
+    state:{
+        type: String,
+        enum:["activo","inactivo","bloqueado","Eliminado"],
+        default: "activo",
+    },
     deleteAt:{
         type: Date,
         default: null,
