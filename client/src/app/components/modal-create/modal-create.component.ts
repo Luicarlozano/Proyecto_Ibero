@@ -55,7 +55,7 @@ onSubmit() {
           this.router.navigateByUrl('/',{skipLocationChange: true}).then(()=>{this.router.navigate([this.route])})
         },
         error:(error)=>{
-          Swal.fire('Algo a fallado',error.message,'error');
+          Swal.fire('Algo a fallado',error.error,'error');
           console.log(error);
         }
       })

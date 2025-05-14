@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 
 import { ListUsersComponent } from "../../components/list-users/list-users.component";
 import { ModalCreateComponent } from "../../components/modal-create/modal-create.component";
+import { HeaderComponent } from '../../components/header/header.component';
 
 
 
@@ -10,7 +11,7 @@ import { ModalCreateComponent } from "../../components/modal-create/modal-create
 @Component({
   selector: 'app-users',
   standalone: true,
-  imports: [CommonModule, ListUsersComponent, ModalCreateComponent],
+  imports: [CommonModule, ListUsersComponent, ModalCreateComponent,HeaderComponent],
   templateUrl: './users.component.html',
   styleUrl: './users.component.css'
 })
