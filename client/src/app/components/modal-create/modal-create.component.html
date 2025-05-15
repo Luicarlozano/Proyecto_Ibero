@@ -1,0 +1,99 @@
+<div class="fondo">
+  <div class="modal">
+    @if(modalMode === 'user'){
+    <h2 class="title">Crear Usuario</h2>
+    <hr />
+    <form [formGroup]="userForm" class="form">
+      <div class="fields">
+        <label for="firstName">Nombre</label>
+        <div class="inputIcon">
+          <input
+            type="text"
+            id="firstName"
+            name="firstName"
+            required
+            formControlName="firstName"
+            class="filled"
+            placeholder="Luis"
+          />
+          <img src="User.png" alt="" />
+        </div>
+      </div>
+      <div class="fields">
+        <label for="lastName">Apellido</label>
+        <div class="inputIcon">
+          <input
+            type="text"
+            id="lastName"
+            name="lastName"
+            required
+            formControlName="lastName"
+            class="filled"
+            placeholder="Ariza"
+          />
+          <img src="User.png" alt="" />
+        </div>
+      </div>
+      <div class="fields">
+        <label for="idNumber">Documento</label>
+        <div class="inputIcon">
+          <input
+            type="number"
+            id="idNumber"
+            name="idNumber"
+            required
+            formControlName="idNumber"
+            class="filled"
+            placeholder="100000000"
+          />
+          <img src="IdDocument.png" alt="" />
+        </div>
+      </div>
+      <div class="fields">
+        <label for="email">Correo Electronico</label>
+        <div class="inputIcon">
+          <input
+            type="text"
+            id="email"
+            name="email"
+            required
+            formControlName="email"
+            class="filled"
+            placeholder=""
+          />
+          <img src="Letter.png" alt="" />
+        </div>
+      </div>
+      <div class="fields">
+        <label for="role">Rol</label>
+        <select name="role" id="role" formControlName="role">
+          <option selected="true" disabled="disabled">Seleccione un rol</option>
+          <option value="empleado">Empleado</option>
+          <option value="administrador">Administrador</option>
+        </select>
+      </div>
+      <div class="fields">
+        <label for="password">Contraseña</label>
+        <div class="inputIcon">
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            formControlName="password"
+            class="filled"
+            placeholder="********"
+          />
+          <img src="Password.png" alt="" />
+        </div>
+      </div>
+    </form>
+    }
+    <div class="buttons">
+      <button class="buttonCancel" (click)="close.emit()">Cancelar</button>
+      <button type="submit" class="buttonCreate" (click)="onSubmit()">
+        Crear
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<app-header></app-header>
+<h1>
+    Gestion de Usuarios
+</h1>
+
+<button class="createUserButton" (click)="openModalUser()">
+    Crear Usuario
+</button>
+
+<h2>Listado de Usuarios Activos</h2>
+
+<app-list-users/>
+
+<app-modal-create *ngIf="modalIsOpenUser" [modalMode]="modalModeUser" (close)="closeModalUser()"></app-modal-create>
