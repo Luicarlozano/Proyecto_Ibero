@@ -1,0 +1,43 @@
+.header{
+    background-color: #3D56C7;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+}
+
+.header .logo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+.header .logo img{
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    margin-right:10px ;
+}
+
+.header #menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.header #menu ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    
+    gap: 10px;
+    color:white;
+}
+.header #menu ul a{
+    color: white;
+    text-decoration: none;
+}
+
+.header #menu ul a:hover{
+    color:blue;
+    text-decoration: underline;
+}

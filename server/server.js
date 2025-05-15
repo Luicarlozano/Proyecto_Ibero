@@ -1,27 +1,20 @@
-import express from 'express';
-import { connectDB } from './config/db.js';
-import dotenv from 'dotenv';
-import productRoutes from './routes/product.routes.js'
-import inventoryMovementRoutes from './routes/inventoryMovement.routes.js'
-import userRoutes from './routes/user.routes.js'
+import express from "express";
+import "dotenv/config";
+import connectDB from "./config/dbConnect.js";
+import apiRouter from "./routes/apiRouter.js";
+import cors from "cors";
 
-dotenv.config();
-
-//Instancia de express
 const app = express();
+const port = process.env.PORT;
+connectDB()
 
-//Conecxion a la base de datos
-connectDB();
-
-//Middlewares
 app.use(express.json());
+app.use(cors());
+app.use("", apiRouter);
 
-//Rutas
-app.use('/api/products', productRoutes);
-app.use('/api/inventoryMovements', inventoryMovementRoutes);
-app.use('/api/users', userRoutes);
 
-//Servidor
-app.listen(3000, () => {
-  console.log(' Servidor corriendo en el puerto 3000');
-});
+
+app.listen(port, () =>{
+   console.log(`Server is running on port: ${port}`)
+})
+
