@@ -1,7 +1,7 @@
 <div class="fondo">
   <div class="modal">
-    @if(modalMode === 'user'){
-    <h2 class="title">Crear Usuario</h2>
+    @if(modeUpdate === 'user'){
+    <h2 class="title">Editar Usuario</h2>
     <hr />
     <form [formGroup]="userForm" class="form">
       <div class="fields">
@@ -12,6 +12,7 @@
             id="firstName"
             name="firstName"
             required
+            [(ngModel)]="user.firstName"
             formControlName="firstName"
             class="filled"
             placeholder="Luis"
@@ -27,6 +28,7 @@
             id="lastName"
             name="lastName"
             required
+            [(ngModel)]="user.lastName"
             formControlName="lastName"
             class="filled"
             placeholder="Ariza"
@@ -42,6 +44,7 @@
             id="idNumber"
             name="idNumber"
             required
+            [(ngModel)]="user.idNumber"
             formControlName="idNumber"
             class="filled"
             placeholder="100000000"
@@ -57,6 +60,8 @@
             id="email"
             name="email"
             required
+            [(ngModel)]="user.email"
+            readonly
             formControlName="email"
             class="filled"
             placeholder=""
@@ -66,7 +71,8 @@
       </div>
       <div class="fields">
         <label for="role">Rol</label>
-        <select name="role" id="role" class="select_input" formControlName="role">
+        <select name="role" id="role" 
+        [(ngModel)]="user.role" formControlName="role" class="select_input">
           <option selected="true" disabled="disabled">Seleccione un rol</option>
           <option value="empleado">Empleado</option>
           <option value="administrador">Administrador</option>
@@ -82,14 +88,24 @@
             required
             formControlName="password"
             class="filled"
+            [(ngModel)]="user.password"
             placeholder="********"
           />
           <img src="Password.png" alt="" />
         </div>
+        <div class="fields">
+        <label for="state">Estado</label>
+        <select name="state" id="state" [(ngModel)]="user.state" class="select_input" formControlName="state">
+          <option selected="true" disabled="disabled">Seleccione un Estado</option>
+          <option value="activo">Activo</option>
+          <option value="inactivo">Inactivo</option>
+          <option value="inactivo">bloqueado</option>
+        </select>
+      </div>
       </div>
     </form>
-    } @else if (modalMode ==='product') {
-       <h2 class="title">Crear Producto</h2>
+    } @else if (modeUpdate === 'product') {
+     <h2 class="title">Editar Producto</h2>
     <hr />
     <form [formGroup]="productForm" class="form">
       <div class="fields">
@@ -100,6 +116,8 @@
             id="codigo"
             name="codigo"
             required
+            readonly
+            [(ngModel)]="product.codigo"
             formControlName="codigo"
             class="filled"
             placeholder="IPHO1457"
@@ -113,6 +131,7 @@
             type="text"
             id="nombre"
             name="nombre"
+            [(ngModel)]="product.nombre"
             required
             formControlName="nombre"
             class="filled"
@@ -128,6 +147,7 @@
             id="marca"
             name="marca"
             required
+            [(ngModel)]="product.marca"
             formControlName="marca"
             class="filled"
             placeholder="Apple"
@@ -136,7 +156,7 @@
       </div>
       <div class="fields">
         <label for="estado">Estado</label>
-        <select name="estado" class="select_input" id="estado" formControlName="estado">
+        <select name="estado" class="select_input" id="estado" [(ngModel)]="product.estado" formControlName="estado">
           <option selected="true" disabled="disabled">Seleccione un estado</option>
           <option value="Nuevo">Nuevo</option>
           <option value="Usado">Usado</option>
@@ -151,6 +171,7 @@
             id="color"
             name="color"
             required
+            [(ngModel)]="product.color"
             formControlName="color"
             class="filled"
             placeholder="Negro"
@@ -166,6 +187,7 @@
             id="precio"
             name="precio"
             required
+            [(ngModel)]="product.precio"
             formControlName="precio"
             class="filled"
             placeholder="$1.254.789"
@@ -181,6 +203,7 @@
             id="stock"
             name="stock"
             required
+            [(ngModel)]="product.stock"
             formControlName="stock"
             class="filled"
             placeholder="10"
@@ -190,7 +213,7 @@
       </div>
        <div class="fields">
         <label for="categoria">Categoria</label>
-        <select name="categoria" class="select_input" id="categoria" formControlName="categoria">
+        <select name="categoria" class="select_input" id="categoria" [(ngModel)]="product.categoria" formControlName="categoria">
           <option selected="true" disabled="disabled">Seleccione una categoria</option>
           <option value="Celulares">Celulares</option>
           <option value="Accesorios">Accesorios</option>
@@ -204,114 +227,21 @@
             id="descripcion"
             name="descripcion"
             required
+            [(ngModel)]="product.descripcion"
             formControlName="descripcion"
             class="filled"
             placeholder=""
-          />
-        </div>
-      </div>
-      <div class="fields">
-        <label for="imagen">Imagen</label>
-        <div class="inputIcon">
-          <input
-            type="file"
-            id="imagen"
-            name="imagen"
-            required
-            formControlName="imagen"
-            class="filled"
-            placeholder=""
-            (change)="onfileChange($event)"
-          />
-        </div>
-      </div>
-
-    </form>
-    }@else if (modalMode === 'entry') {
-      <h2 class="title">Crear Movimiento</h2>
-    <hr />
-    <form [formGroup]="entryForm" class="form">
-      <div class="fields">
-        <label for="codigoTRX">Codigo Movimiento</label>
-        <div class="inputIcon">
-          <input
-            type="text"
-            id="codigoTRX"
-            name="codigoTRX"
-            required
-            formControlName="codigoTRX"
-            class="filled"
-            placeholder="PX1457"
-          />
-        </div>
-      </div>
-      <div class="fields">
-        <label for="fecha">Fecha Movimiento</label>
-        <div class="inputIcon">
-          <input
-            type="date"
-            id="fecha"
-            name="fecha"
-            required
-            formControlName="fecha"
-            class="filled"
           />
         </div>
       </div>
       
-      <div class="fields">
-        <label for="tipoMovimiento">Tipo Movimiento</label>
-        <select name="tipoMovimiento" class="select_input" id="tipoMovimiento" formControlName="tipoMovimiento">
-          <option selected="true" disabled="disabled">Seleccione un tipo de Movimiento</option>
-          <option value="Venta">Venta</option>
-          <option value="Ingreso Inventario">Ingreso Inventario</option>
-          <option value="Salida Producto Dañado">Salida Producto Dañado</option>
-        </select>
-      </div>
-      <div class="fields">
-        <label for="producto">Producto</label>
-        <select name="producto" class="select_input" id="producto" formControlName="producto">
-          <option selected="true" disabled="disabled">Seleccione un producto</option>
-          @for(product of allProducts; track product._id) {
-          <option value="{{product._id}}">Producto: {{product.nombre}} Codigo: {{product.codigo}}</option>
-          }
-        </select>
-      </div>
-      <div class="fields">
-        <label for="cantidad">Cantidad</label>
-        <div class="inputIcon">
-          <input
-            type="number"
-            id="cantidad"
-            name="cantidad"
-            required
-            formControlName="cantidad"
-            class="filled"
-            placeholder="2"
-          />
-        </div>
-        
-      </div>
-      <div class="fields">
-        <label for="descripcion">Descripcion</label>
-        <div class="inputIcon">
-          <input
-            type="text"
-            id="descripcion"
-            name="descripcion"
-            required
-            formControlName="descripcion"
-            class="filled"
-            placeholder=""
-          />
-        </div>
-      </div>
+
     </form>
     }
     <div class="buttons">
       <button class="buttonCancel" (click)="close.emit()">Cancelar</button>
-      <button type="submit" class="buttonCreate" (click)="onSubmit()">
-        Crear
+      <button type="submit" class="buttonUpdate" (click)="updateOne()">
+        Editar
       </button>
     </div>
   </div>

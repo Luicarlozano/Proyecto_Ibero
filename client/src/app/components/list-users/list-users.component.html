@@ -40,10 +40,10 @@
         }
 
         <td class="actions">
-          <button class="imgButton">
+          <button class="imgButton" (click)="openModalUpdate('user',user)">
             <img src="/Edit Profile.png" alt="" />
           </button>
-          <button class="imgButton">
+          <button class="imgButton" (click)="deleteOneUser(user.email)">
             <img src="/Delete Profile.png" alt="" />
           </button>
         </td>
@@ -51,4 +51,9 @@
     }
     </tbody>
   </table>
+  <app-modal-update
+    *ngIf="modalUpdateIsOpen"
+    [modeUpdate]="modalUpdateMode"
+    [user]="userInfo"
+    (close)="closeUpdateModal()"></app-modal-update>
 </div>
