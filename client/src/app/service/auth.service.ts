@@ -7,6 +7,8 @@ export class AuthService {
   constructor() {}
 
   getToken():string | null {
+    if (typeof window === 'undefined' || !window.sessionStorage) {
+      return null;	}
     return sessionStorage.getItem('token')
   }
 

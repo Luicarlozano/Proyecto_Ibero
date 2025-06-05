@@ -32,7 +32,6 @@ export class ListEntrysComponent {
   constructor() {
     this.entryService.getEntrys().subscribe((data: any[]) => {
       this.entrys = data;
-      console.log(this.entrys)
     });
   }
 }
