@@ -8,7 +8,7 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class ProductService {
-private readonly apiUrl = 'http://localhost:3000/products';
+private readonly apiUrl = 'https://proyecto-ibero.vercel.app/products';
 constructor(private http:HttpClient) {}
   
 private authService = inject(AuthService)

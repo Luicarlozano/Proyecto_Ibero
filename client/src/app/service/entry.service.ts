@@ -8,7 +8,7 @@ import { AuthService } from './auth.service';
   providedIn: 'root',
 })
 export class EntryService {
-  private readonly apiUrl = 'http://localhost:3000/inventoryMovements';
+  private readonly apiUrl = 'https://proyecto-ibero.vercel.app/inventoryMovements';
 
   constructor(private http: HttpClient) {}
   

@@ -8,7 +8,7 @@ import { AuthService } from './auth.service';
   providedIn: 'root',
 })
 export class UsersService {
-  private readonly apiUrl = 'http://localhost:3000/users';
+  private readonly apiUrl = 'https://proyecto-ibero.vercel.app/users';
 
   constructor(private http :HttpClient){};
 
