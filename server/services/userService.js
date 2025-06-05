@@ -48,6 +48,7 @@ async function updateUserServ(user,userData) {
             password,
             state
         } = userData;
+        
         user.firstName = firstName;
         user.lastName = lastName;
         user.idNumber = idNumber;

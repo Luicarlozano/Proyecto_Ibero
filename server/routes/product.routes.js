@@ -9,10 +9,13 @@ import {
     updateProduct,
     updateProductField
 } from '../controllers/productController.js';
+import { uploadSupabase } from '../middleware/uploadSupabase.js';
+import { upload } from '../config/multerConfig.js';
+import { verifyToken } from '../middleware/auth.js';
 
 const router = express.Router();
 
-router.post('/', createProduct);
+router.post('/', upload.single("imagen"),uploadSupabase,createProduct);
 router.get('/', getProducts);
 router.get('/category/:categoria', getProductsByCategory);
 router.get('/brand/:marca', getProductsByBrand);

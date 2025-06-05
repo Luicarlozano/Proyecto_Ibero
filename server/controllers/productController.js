@@ -32,7 +32,10 @@ export const getProductByCode = async (req, res) => {
 //Crear un nuevo producto
 export const createProduct = async (req, res) => {
     try {
-        const { codigo, nombre, descripcion, marca, color, precio, stock, imagen, categoria } = req.body;
+        console.log(req.body);
+        const { codigo, nombre, descripcion, marca, color, estado, precio, stock, categoria } = req.body;
+        const imagen = req.file.supabaseUrl;
+        console.log(imagen);
         if (!codigo || !nombre || !descripcion || !marca || !color || !precio || !imagen || !categoria) {
             return res.status(400).json({ error: 'Todos los campos son obligatorios' });
         }
@@ -50,7 +53,7 @@ export const createProduct = async (req, res) => {
             return res.status(400).json({ error: 'Ya existe un producto con este codigo' });
         }
 
-        const product = new Product({ codigo, nombre, descripcion, marca, color, precio, stock, imagen, categoria });
+        const product = new Product({ codigo, nombre, descripcion, marca, color, precio, estado, stock, imagen, categoria });
         await product.save();
         return res.status(201).json(product);
 
@@ -64,9 +67,9 @@ export const createProduct = async (req, res) => {
 export const updateProduct = async (req, res) => {
     try {
         const { codigo } = req.params;
-        const { nombre, descripcion, marca, color, precio, stock, imagen, categoria } = req.body;
+        const { nombre, descripcion, marca, color, precio, stock, estado, categoria } = req.body;
         
-        if (!nombre || !descripcion || !marca || !color || !precio || !imagen || !categoria) {
+        if (!nombre || !descripcion || !marca || !color || !precio || !categoria) {
             return res.status(400).json({ error: 'Todos los campos son obligatorios para la actualizacion' });
         }
 
@@ -85,8 +88,9 @@ export const updateProduct = async (req, res) => {
         product.marca = marca;
         product.color = color;
         product.precio = precio;
+        product.estado = estado;
         product.stock = stock;
-        product.imagen = imagen;
+        // product.imagen = imagen;
         product.categoria = categoria;
         await product.save();
         return res.status(200).json(product);
