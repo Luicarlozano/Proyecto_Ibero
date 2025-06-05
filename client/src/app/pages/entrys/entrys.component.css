@@ -1,0 +1,25 @@
+h1{
+    margin: 10px 20px;
+    text-shadow: 2px 3px 10px gray;
+}
+
+.createEntryButton{
+    margin: 10px 40px;
+    padding: 10px 20px;
+    background-color: #3D56C7;
+    color: white;
+    border-radius: 20px;
+    box-shadow: 0px 5px 10px gray;
+}
+
+.createEntryButton:hover{
+    text-decoration: underline;
+    scale: 1.05;
+    transition: 0.3s;
+}
+
+h2 {
+    margin: 10px 20px;
+    text-decoration: underline;
+    font-size: 20px;
+}

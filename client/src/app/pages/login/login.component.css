@@ -38,14 +38,14 @@
     justify-content: center;
     align-items: center;
     width: 50%;
-    height: 100vh;
+    height: 100%;
     padding: 10px;
 }
 
 .right-container .into{
     background-color: #4F4FCA;
     width: 40%;
-    height: 40%;
+    height: clamp(20%, 40%, 50%);
     border-radius: 40px;
     box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.1);
 }

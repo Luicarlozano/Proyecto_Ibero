@@ -1,0 +1,46 @@
+<div>
+  <table class="table-users">
+    <thead class="table-users_head">
+      <tr>
+        <th scope="col">Id_Movimiento</th>
+        <th scope="col">Fecha</th>
+        <th scope="col">Proceso</th>
+        <th scope="col">Codigo_Prod</th>
+        <th scope="col">Marca</th>
+        <th scope="col">Usuario</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(entry of entrys; track entry._id){
+      <tr>
+        <th scope="row">
+          {{entry.codigoTRX }}
+        </th>
+        <td>
+          {{entry.fecha | date: 'dd/MM/yyyy'}}
+        </td>
+        <td>
+          {{entry.tipoMovimiento }}
+        </td>
+        <td>
+          {{entry?.producto?.codigo}}
+        </td>
+        <td>
+          {{entry?.producto?.marca}}
+        </td>
+        
+        <td >
+          {{ entry.usuario?.firstName+ " " + entry.usuario?.lastName}}
+        </td>
+
+        <td class="actions">
+          <button class="imgButton" >
+            <img src="/View Details.png" alt="" />
+          </button>
+        </td>
+      </tr>
+    }
+    </tbody>
+  </table>
+</div>

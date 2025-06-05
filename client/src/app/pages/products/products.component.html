@@ -1,0 +1,14 @@
+<app-header></app-header>
+<h1>
+    Gestion de Productos
+</h1>
+
+<button class="createProductButton" (click)="openModalProduct()">
+    Crear Producto
+</button>
+
+<h2>Listado de Productos Activos</h2>
+
+<app-list-products></app-list-products>
+
+<app-modal-create *ngIf="modalIsOpenProduct" [modalMode]="modalModeProduct" (close)="closeModalProduct()"></app-modal-create>
