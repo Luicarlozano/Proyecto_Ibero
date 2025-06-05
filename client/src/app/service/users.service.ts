@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../models/user.model';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -9,13 +10,24 @@ import { User } from '../models/user.model';
 export class UsersService {
   private readonly apiUrl = 'http://localhost:3000/users';
 
-  private http = inject(HttpClient);
+  constructor(private http :HttpClient){};
+
+   private authService = inject(AuthService)
+   private token = this.authService.getToken()
 
   getUsers(): Observable<User[]> {
+    let headers = new HttpHeaders ()
+        if (typeof this.token === 'string'){
+         headers = headers.append('Authorization',this.token)
+        }
     return this.http.get<User[]>(`${this.apiUrl}/`);
   }
 
   getAllUsers() {
+    let headers = new HttpHeaders ()
+        if (typeof this.token === 'string'){
+         headers = headers.append('Authorization',this.token)
+        }
     return this.http.get(`${this.apiUrl}/`);
   }
 

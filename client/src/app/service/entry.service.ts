@@ -19,6 +19,10 @@ export class EntryService {
   
 
   getEntrys(): Observable<Entry[]> {
+    let headers = new HttpHeaders ()
+    if (typeof this.token === 'string'){
+     headers = headers.append('Authorization',this.token)
+    }
     return this.http.get<Entry[]>(`${this.apiUrl}/`);
   }
   createEntry(entry:Partial<Entry>):Observable<Entry>{
