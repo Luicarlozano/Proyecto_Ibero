@@ -7,24 +7,34 @@
     <div class="into">
         <h1>Iniciar Sesion</h1>
     <div class="form">
-      <form action="">
+      <form [formGroup]="loginForm">
         <div class="fields">
           <label for="">Correo Electronico</label>
           <div class="input">
-          <input type="email" placeholder="ejemplo@gmail.com" />
+          <input type="email" 
+          id="email"
+          name="email"
+          required
+          formControlName="email"
+          placeholder="ejemplo@gmail.com" />
           <img src="Letter.png" alt="" />
           </div>
         </div>
         <div class="fields">
             <label for="">Contraseña</label>
             <div class="input">
-            <input type="password" placeholder="********" />
+            <input type="password"
+            id="password"
+            name="password"
+            required
+            formControlName="password"
+            placeholder="********" />
             <img src="Password.png" alt="">
             </div>
         </div>
       </form>
       <div class="buttom">
-        <button class="btn">Iniciar Sesion</button>
+        <button class="btn" type="submit" (click)="onSubmit()">Iniciar Sesion</button>
       </div>
     </div>
     </div>

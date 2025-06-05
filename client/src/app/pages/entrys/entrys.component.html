@@ -1,0 +1,14 @@
+<app-header></app-header>
+<h1>
+    Gestion de Movimientos de Inventario
+</h1>
+
+<button class="createEntryButton" (click)="openModalEntry()">
+    Crear Movimiento
+</button>
+
+<h2>Listado de Movimientos</h2>
+
+<app-list-entrys></app-list-entrys>
+
+<app-modal-create *ngIf="modalIsOpenEntry" [modalMode]="modalModeEntry" (close)="closeModalEntry()"></app-modal-create>

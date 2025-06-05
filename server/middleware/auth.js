@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 
 export const verifyToken = (req, res, next) => {
-    const token = req.header('Authorization')?.split(' ')[1]; // Espera formato: "Bearer token"
+    const token = req.headers.authorization; // Espera formato: "Bearer token"
 
     if (!token) {
         return res.status(401).json({ mensaje: 'Token no proporcionado' });

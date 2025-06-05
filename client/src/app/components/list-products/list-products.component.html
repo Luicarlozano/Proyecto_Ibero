@@ -1,0 +1,62 @@
+<div>
+  <table class="table-users">
+    <thead class="table-users_head">
+      <tr>
+        <th scope="col">Codigo</th>
+        <th scope="col">Referencia</th>
+        <th scope="col">Marca</th>
+        <th scope="col"> Estado</th>
+        <th scope="col">Color</th>
+        <th scope="col">Stock</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(product of products; track product._id){
+      <tr>
+        <th scope="row">
+          {{product.codigo }}
+        </th>
+        <td>
+          {{product.nombre }}
+        </td>
+        <td>
+          {{product.marca }}
+        </td>
+        <td>
+          {{product.estado }}
+        </td>
+        <td>
+          {{product.color }}
+        </td>
+        @if (product.stock < 1) {
+        <td class="NoStock">
+          {{ product.stock }}
+        </td>
+        } @else {
+        <td class="Stock">
+          {{ product.stock }}
+        </td>
+        }
+
+        <td class="actions">
+          <button class="imgButton" (click)="openModalUpdate('product',product)">
+            <img src="/Edit Product.png"  alt="" />
+          </button>
+          <button class="imgButton" >
+            <img src="/View Details.png" alt="" />
+          </button>
+          <button class="imgButton" (click)="deleteOneProduct(product.codigo)">
+            <img src="/Remove.png" alt="" />
+          </button>
+        </td>
+      </tr>
+    }
+    </tbody>
+  </table>
+   <app-modal-update
+    *ngIf="modalUpdateIsOpen"
+    [modeUpdate]="modalUpdateMode"
+    [product]="productInfo"
+    (close)="closeUpdateModal()"></app-modal-update>
+</div>

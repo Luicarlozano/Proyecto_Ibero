@@ -66,7 +66,7 @@
       </div>
       <div class="fields">
         <label for="role">Rol</label>
-        <select name="role" id="role" formControlName="role">
+        <select name="role" id="role" class="select_input" formControlName="role">
           <option selected="true" disabled="disabled">Seleccione un rol</option>
           <option value="empleado">Empleado</option>
           <option value="administrador">Administrador</option>
@@ -85,6 +85,225 @@
             placeholder="********"
           />
           <img src="Password.png" alt="" />
+        </div>
+      </div>
+    </form>
+    } @else if (modalMode ==='product') {
+       <h2 class="title">Crear Producto</h2>
+    <hr />
+    <form [formGroup]="productForm" class="form">
+      <div class="fields">
+        <label for="codigo">Codigo</label>
+        <div class="inputIcon">
+          <input
+            type="text"
+            id="codigo"
+            name="codigo"
+            required
+            formControlName="codigo"
+            class="filled"
+            placeholder="IPHO1457"
+          />
+        </div>
+      </div>
+      <div class="fields">
+        <label for="nombre">Referencia</label>
+        <div class="inputIcon">
+          <input
+            type="text"
+            id="nombre"
+            name="nombre"
+            required
+            formControlName="nombre"
+            class="filled"
+            placeholder="Iphone 14"
+          />
+        </div>
+      </div>
+      <div class="fields">
+        <label for="marca">Marca</label>
+        <div class="inputIcon">
+          <input
+            type="text"
+            id="marca"
+            name="marca"
+            required
+            formControlName="marca"
+            class="filled"
+            placeholder="Apple"
+          />
+        </div>
+      </div>
+      <div class="fields">
+        <label for="estado">Estado</label>
+        <select name="estado" class="select_input" id="estado" formControlName="estado">
+          <option selected="true" disabled="disabled">Seleccione un estado</option>
+          <option value="Nuevo">Nuevo</option>
+          <option value="Usado">Usado</option>
+          <option value="Reacondicionado">Reacondicionado</option>
+        </select>
+      </div>
+      <div class="fields">
+        <label for="color">Color</label>
+        <div class="inputIcon">
+          <input
+            type="text"
+            id="color"
+            name="color"
+            required
+            formControlName="color"
+            class="filled"
+            placeholder="Negro"
+          />
+        </div>
+        
+      </div>
+          <div class="fields">
+        <label for="precio">precio</label>
+        <div class="inputIcon">
+          <input
+            type="number"
+            id="precio"
+            name="precio"
+            required
+            formControlName="precio"
+            class="filled"
+            placeholder="$1.254.789"
+          />
+        </div>
+        
+      </div>
+         <div class="fields">
+        <label for="stock">stock</label>
+        <div class="inputIcon">
+          <input
+            type="number"
+            id="stock"
+            name="stock"
+            required
+            formControlName="stock"
+            class="filled"
+            placeholder="10"
+          />
+        </div>
+        
+      </div>
+       <div class="fields">
+        <label for="categoria">Categoria</label>
+        <select name="categoria" class="select_input" id="categoria" formControlName="categoria">
+          <option selected="true" disabled="disabled">Seleccione una categoria</option>
+          <option value="Celulares">Celulares</option>
+          <option value="Accesorios">Accesorios</option>
+        </select>
+      </div>
+      <div class="fields">
+        <label for="descripcion">Descripcion</label>
+        <div class="inputIcon">
+          <input
+            type="text"
+            id="descripcion"
+            name="descripcion"
+            required
+            formControlName="descripcion"
+            class="filled"
+            placeholder=""
+          />
+        </div>
+      </div>
+      <div class="fields">
+        <label for="imagen">Imagen</label>
+        <div class="inputIcon">
+          <input
+            type="file"
+            id="imagen"
+            name="imagen"
+            required
+            formControlName="imagen"
+            class="filled"
+            placeholder=""
+            (change)="onfileChange($event)"
+          />
+        </div>
+      </div>
+
+    </form>
+    }@else if (modalMode === 'entry') {
+      <h2 class="title">Crear Movimiento</h2>
+    <hr />
+    <form [formGroup]="entryForm" class="form">
+      <div class="fields">
+        <label for="codigoTRX">Codigo Movimiento</label>
+        <div class="inputIcon">
+          <input
+            type="text"
+            id="codigoTRX"
+            name="codigoTRX"
+            required
+            formControlName="codigoTRX"
+            class="filled"
+            placeholder="PX1457"
+          />
+        </div>
+      </div>
+      <div class="fields">
+        <label for="fecha">Fecha Movimiento</label>
+        <div class="inputIcon">
+          <input
+            type="date"
+            id="fecha"
+            name="fecha"
+            required
+            formControlName="fecha"
+            class="filled"
+          />
+        </div>
+      </div>
+      
+      <div class="fields">
+        <label for="tipoMovimiento">Tipo Movimiento</label>
+        <select name="tipoMovimiento" class="select_input" id="tipoMovimiento" formControlName="tipoMovimiento">
+          <option selected="true" disabled="disabled">Seleccione un tipo de Movimiento</option>
+          <option value="Venta">Venta</option>
+          <option value="Ingreso Inventario">Ingreso Inventario</option>
+          <option value="Salida Producto Dañado">Salida Producto Dañado</option>
+        </select>
+      </div>
+      <div class="fields">
+        <label for="producto">Producto</label>
+        <select name="producto" class="select_input" id="producto" formControlName="producto">
+          <option selected="true" disabled="disabled">Seleccione un producto</option>
+          @for(product of allProducts; track product._id) {
+          <option value="{{product._id}}">Producto: {{product.nombre}} Codigo: {{product.codigo}}</option>
+          }
+        </select>
+      </div>
+      <div class="fields">
+        <label for="cantidad">Cantidad</label>
+        <div class="inputIcon">
+          <input
+            type="number"
+            id="cantidad"
+            name="cantidad"
+            required
+            formControlName="cantidad"
+            class="filled"
+            placeholder="2"
+          />
+        </div>
+        
+      </div>
+      <div class="fields">
+        <label for="descripcion">Descripcion</label>
+        <div class="inputIcon">
+          <input
+            type="text"
+            id="descripcion"
+            name="descripcion"
+            required
+            formControlName="descripcion"
+            class="filled"
+            placeholder=""
+          />
         </div>
       </div>
     </form>
