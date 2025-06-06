@@ -29,8 +29,7 @@ async function getUserByEmail(email){
 
 async function createNewUser(userData) {
     try{
-        const user = new User(userData);
-        await user.save();
+        const user = await User.create(userData);
         return user;
     } catch (error) {
         throw new Error(`Error creating user: ${error.message}`);
