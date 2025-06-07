@@ -6,15 +6,17 @@ import cors from "cors";
 
 const app = express();
 const port = process.env.PORT;
-connectDB()
+
+if (process.env.NODE_ENV !== "test") {
+  connectDB();
+}
 
 app.use(express.json());
 app.use(cors());
 app.use("", apiRouter);
 
-
-
-app.listen(port, () =>{
-   console.log(`Server is running on port: ${port}`)
-})
-
+if (process.env.NODE_ENV !== "test") {
+  app.listen(port, () => {
+    console.log(`Server is running on port: ${port}`);
+  });
+}

@@ -14,7 +14,6 @@ export const getInventoryMovements = async (req, res) => {
     }
     return res.status(200).json(inventoryMovements);
   } catch (error) {
-    console.error(error);
     res
       .status(500)
       .json({ error: "Error al obtener los movimientos de inventario" });
@@ -105,7 +104,7 @@ export const createInventoryMovement = async (req, res) => {
 
     await product.save();
 
-    const inventoryMovement = new InventoryMovement({
+    const inventoryMovement = InventoryMovement.create({
       codigoTRX,
       fecha,
       tipoMovimiento,

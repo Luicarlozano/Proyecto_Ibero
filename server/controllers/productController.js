@@ -9,7 +9,6 @@ export const getProducts = async (req, res) => {
         }
         return res.status(200).json(products);
     } catch (error) {
-        console.error(error);
         res.status(500).json({ error: 'Error al obtener los productos' });
     }
 };
@@ -58,7 +57,6 @@ export const createProduct = async (req, res) => {
         return res.status(201).json(product);
 
     } catch (error) {
-        console.error(error);
         res.status(500).json({ error: 'Error al crear el producto' });
     }
 };
@@ -96,7 +94,6 @@ export const updateProduct = async (req, res) => {
         return res.status(200).json(product);
 
     } catch (error) {
-        console.error(error);
         res.status(500).json({ error: 'Error al actualizar el producto' });
     }
 };
