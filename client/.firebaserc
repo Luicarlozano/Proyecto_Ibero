@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "proyecto-ibero2025"
+  },
+  "targets": {
+    "proyecto-ibero2025": {
+      "hosting": {
+        "client": [
+          "client"
+        ]
+      }
+    }
+  }
+}
